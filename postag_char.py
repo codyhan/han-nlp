@@ -4,8 +4,15 @@ Created on Tue Oct 25 10:58:22 2016
 
 @author: han
 
-This script puts postag labels to words in a sentence.
- 
+This script puts postag labels to each word in a sentence by using LTP.
+
+For example,
+Input: 真爱应该是永恒的
+Output:真_d 爱_v 应_v 该_v 是_v 永_z 恒_z 的_u
+
+Args:
+sys.argv[1]:the file to be converted
+sys.argv[2]:the resulted file 
 """
 
 import sys
@@ -14,9 +21,9 @@ from pyltp import Postagger
 
 
 def main():
-    segmentor = Segmentor()  # 初始化实例
+    segmentor = Segmentor()  
     segmentor.load("/home/han/Ltp/3.3.1/ltp_data/cws.model")
-    postagger = Postagger() # 初始化实例
+    postagger = Postagger()
     postagger.load("/home/han/Ltp/3.3.1/ltp_data/pos.model")
     file1 = open(sys.argv[1],"r")
     file2 = open(sys.argv[2],"w")
